@@ -1,0 +1,13 @@
+#include<iostream>
+using namespace std;
+
+int main()
+{
+	int *p, n;
+	p=&n;
+	cout<<"Enter a number: ";
+	cin>>n;
+	cout<<"Pointer values: " << *p << endl;
+	cout<<"Memory address: " <<p;
+
+}
