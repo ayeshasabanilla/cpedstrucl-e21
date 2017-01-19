@@ -22,28 +22,18 @@ public:
                                
         head = n;              
     }
-    
-    int popValue(){
-        Node *n = head;
-        int ret = n->x;
-
-        head = head->next;
-        delete n;
-        return ret;
-    }
-    int display (){
-    	Node *n = head;
-        int val = n->x;
-
-        head = head->next;
-        return val;
-	}
-
+    void display(){
+    	struct Node *n=head;
+        while (head != NULL){
+        	cout<< n -> x;
+			n = n -> next;
+		}	
+		}
 private:
     Node *head; 
 };
 
-int main() {
+int main(){
     LinkedList list;
 while(1)
 {	
@@ -64,20 +54,16 @@ while(1)
     			y++;
 			}break;
 		case 2:
-			{
-				if(y==0)
-				{
-					cout << "empty!";
-				}
-				else{
-				cout << "Pop Value " << list.popValue();
-				y--;
-			}
-			}break;
+		
+			break;
 		case 3: 
 			{
+				if(y==0){
+					cout << "Stack is empty!";
+				} else {
 				list.display();
-			}
+				}
+			} break;
 		case 4:
 			{
 				exit(1);
