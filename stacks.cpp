@@ -1,4 +1,5 @@
 #include <iostream>
+#include <conio.h>
 using namespace std;
 
 class Stack {
@@ -10,14 +11,14 @@ class Stack {
     }
     
   void push(int t) {
-  	cout << "Push "<<t<<": \n";
+  	cout << "Push: "<< t << endl;
     if (top == maxelem) 
 		return;
     s[top++] = t;
   }
   
   int pop() {
-  	cout << "Pop: \n";
+  	cout << "Pop"<<endl;
     if (top == 0) 
 		return -1;
     return s[--top];
@@ -54,31 +55,41 @@ void menu(){
 
 int main() {
   Stack * s = new Stack(100);
+	int z, y;
+	char ans;
+	while (1) {
+	
+	system ("cls");
+	D: menu();
+	cin >> z;
+	switch (z)
+	{
+  case 1:
+  		cout << "What number do you want to push?: ";
+  		cin >> y;
+  		cout << "\n";
+  		s->push(y);
 
-  s -> display();
-  s -> push(1);
-  s -> display();
-  s -> push(2);
-  s -> display();
-  s -> push(3);
-  s -> display();
-  s -> push(4);
-  s -> display();
-  s -> pop();
-  s -> display();
-  s -> pop();
-  s -> display();
-  s -> push(10);
-  s -> display();
-  s -> pop();
-  s -> display();
-  s -> pop();
-  s -> display();
-  s -> pop();
-  s -> display();
-  s -> pop();
-  s -> display();
-  s -> pop();
-  s -> display();
-  return 1;
-}
+		break;
+	case 2:
+		s -> pop();
+		if (y == 0)
+      	cout << "(empty)\n";
+      	cout << "\n";
+		
+		break;
+	case 3:
+		s -> display();
+		cout << "\n";
+		break;
+	case 4:
+		exit(1);
+		break;
+		
+		default: cout << "Invalid Choice!\n"; break;
+	}
+			system ("pause");
+		//	getch ();
+			}
+			
+		}
