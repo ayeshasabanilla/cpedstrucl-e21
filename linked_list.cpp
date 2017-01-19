@@ -32,10 +32,13 @@ public:
         return ret;
     }
     int display(){
-    	Node *n = head;
+    	int counter =1;
         while (head != NULL){
-        	cout << n->	x;
-			n = n-> next;
+        	Node *n = head;
+        	int val  = n->x;
+        	head = head->next;
+   			counter++;
+     		cout<< val <<endl;
 		}	
 		}
 private:
@@ -79,7 +82,8 @@ while(1)
 				{
 					cout << "Stack is empty!";
 				} else {
-				list.display();
+					cout << "Stacks: " << endl;
+				list.display(); 
 				}
 			} break;
 		case 4:
