@@ -1,339 +1,165 @@
 #include<iostream>
-
 #include<stdlib.h>
-
 #include<conio.h>
-
 using namespace std;
 
-
-
 struct node {
-
 int data;
-
 struct node * next;
-
 } *head;
 
-  
-
 int count() {
-
   struct node * n;
-
   int c = 0;
-
   n = head;
-
   while (n != NULL) {
-
     n = n -> next;
-
     c++;
-
   }
-
   return c;
-
 }
 
 void display(struct node * r) {
-
   r = head;
-
   if (r == NULL) {
-
-    return;
-
+   return;
   }
-
   while (r != NULL) {
-
 cout<<  r -> data;
-
     r = r -> next;
-
   }
-
   cout << endl;
-
 }
-
-
-
 void append(int);
-
 void add(int);
-
 void addafter(int , int);
-
 int ddelete(int);
-
 void insert(int);
-
 void search(int);
-
 void delocc(int);
-
 void reverse ();
-
-
-
 int main() {
-
   int i, num,loc, nodes;
-
   struct node * n;
-
   head = NULL;
-
   while (1) {
-
   system ("cls");
-
     cout << "Linked List Operations\n";
-
     cout << "===============\n";
-
     cout << "1. Insert \n";
-
     cout << "2. Add after \n";
-
     cout << "3. Delete \n";
-
     cout << "4. Delete Occurence \n";
-
     cout << "5. Display \n";
-
     cout << "6. Count \n";
-
     cout << "7. Reverse \n";
-
     cout << "8. Search \n";
-
     cout << "9. Exit\n";
-
     cout << "Enter your choice : ";
-
     cin >> i;
-
     if (i <= 0) {
-
       cout << "Enter only an Integer\n";
-
       exit(0);
-
     } else {
-
       switch (i) {
-
       case 1: //insert
-
         cout << "Enter the number to insert : ";
-
         cin >> num;
-
         insert(num);
-
         break;
-
       case 2: //addafter
-
-      if (head == NULL){
-
-      cout << "List is Empty\n";
-
- } else {
-
- 	cout<<"Enter Value: ";
-
-      cin>>num;
-
-      cout<<"Enter Location: ";
-
-      cin>>loc;
-
-      addafter(num,loc);
-
- }
-
-      break;
-
-      case 3: //delete
-
-        if (head == NULL)
-
-          cout << "List is Empty\n";
-
-        else {
-
-          cout <<"Enter the number to delete : ";
-
-          cin >> num;
-
-          if (ddelete(num))
-
-            cout << "Deleted succesfully" << num;
-
-          else
-
-            cout << "Not found on the list "<< num;
-
-        }
-
-        break;
-
-      case 4: //del occur
-
-      if (head == NULL){
-
-      cout << "List is Empty\n";
-
- } else {
-
- 	cout<<"Enter number to delete: ";
-
+        if (head == NULL){
+       cout << "List is Empty\n";
+       } else {
+ 	      cout<<"Enter Value: ";
         cin>>num;
-
-        delocc(num);
-
-        cout<<"All " << num <<" has been deleted succesfully";
-
- }
-
-     
-
-        break;
-
-      case 5: //display
-
-        if (head == NULL) {
-
+        cout<<"Enter Location: ";
+        cin>>loc;
+        addafter(num,loc);
+        }break;
+      case 3: //delete
+        if (head == NULL)
           cout << "List is Empty\n";
-
-        } else {
-
-          cout << "Element(s) in the list are : ";
-
+        else {
+          cout <<"Enter the number to delete : ";
+          cin >> num;
+          if (ddelete(num))
+            cout << "Deleted succesfully" << num;
+          else
+            cout << "Not found on the list "<< num;
         }
-
+        break;
+      case 4: //del occur
+      if (head == NULL){
+      cout << "List is Empty\n";
+ } else {
+ 	cout<<"Enter number to delete: ";
+        cin>>num;
+        delocc(num);
+        cout<<"All " << num <<" has been deleted succesfully";
+ }break;
+      case 5: //display
+        if (head == NULL) {
+          cout << "List is Empty\n";
+        } else {
+          cout << "Element(s) in the list are : ";
+        }
         display(n);
-
         break;
-
       case 6: 
-
       if (head == NULL){
-
       cout << "list of empty";
-
  }
-
 else {
-
 cout << "count of the list: " << count();
-
-}
-
-      break;
-
+}break;
       case 7: 
-
       if (head == NULL){
-
 cout<< "List is empty" <<endl;
-
 } else {
-
 cout << "Reverse elements of the list: "  << endl;
-
 }
-
 reverse();
-
 display(n);
-
       break;
-
       case 8: //search
-
       cout << "Enter the number to search : ";
-
         cin >> num;
-
         search(num);
-
         break;
-
       case 9: 
-
         return 0;
-
       default:
-
         cout << "Invalid option\n";
-
       }
-
     }
-
     getch ();
-
   }
-
   return 0;
-
 }
-
 void append(int num) {
-
   struct node * temp, * right;
-
   temp = (struct node * ) malloc(sizeof(struct node));
-
   temp -> data = num;
-
   right = (struct node * ) head;
-
   while (right -> next != NULL)
-
     right = right -> next;
-
   right -> next = temp;
-
   right = temp;
-
   right -> next = NULL;
-
 }
-
-
-
 void add(int num) {
-
   struct node * temp;
-
   temp = (struct node * ) malloc(sizeof(struct node));
-
   temp -> data = num;
-
   if (head == NULL) {
-
     head = temp;
-
     head -> next = NULL;
-
   } else {
-
     temp -> next = head;
-
     head = temp;
-
   }
-
 }
-
 
 
 void addafter(int num, int loc) {
